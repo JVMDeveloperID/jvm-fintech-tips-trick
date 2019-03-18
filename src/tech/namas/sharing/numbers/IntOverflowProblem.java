@@ -25,6 +25,12 @@ public class IntOverflowProblem {
         System.out.println(notAbsolute);
         System.out.println(totallyAbsolute);
 
+        int someValue = 2147483640;
+        int moreValue = 10000;
+        int total = someValue + moreValue;
+        System.out.println(String.format("%s + %s = %s", someValue, moreValue, total));
+        System.out.println(String.format("%s + %s = %s", someValue, moreValue, safeAddCast(someValue, moreValue)));
+
     }
 
     private static int accumulateAndMultiply(int oldAcc, int newVal, int scale) {
@@ -46,6 +52,10 @@ public class IntOverflowProblem {
         }
 
         return left + right;
+    }
+
+    private static long safeAddCast(int left, int right) {
+        return (long) left + (long) right;
     }
 
     private static int safeMultiply(int left, int right) {
